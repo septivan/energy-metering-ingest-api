@@ -12,6 +12,7 @@ import (
 // RegisterRoutes registers HTTP routes on the provided Gin engine
 func RegisterRoutes(r *gin.Engine, meterHandler *handler.MeterHandler, healthHandler *handler.HealthHandler, logger *zap.Logger, cfg *config.Config) {
 	// Global middleware
+	r.Use(middleware.CORS())
 	r.Use(middleware.Recovery(logger))
 	r.Use(middleware.RequestLogger(logger))
 
